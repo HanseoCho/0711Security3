@@ -12,18 +12,20 @@
 <!--	접근제어방법 	
 	    <intercept-url pattern="/login.html" access="hasRole('ROLE_USER')" />
 	    <intercept-url pattern="/welcome.html" access="hasRole('ROLE_ADMIN')" /> -->
-	    <!-- login-page : 로그인페이지 authentication-failure-url : 로그인 실패시  -->
-	    <form-login login-page="/loginForm.html" authentication-failure-url="/loginForm.html?ng" />
+	    <!-- login-page : 로그인페이지  login-processing-url : 로그인 url 변경 authentication-failure-url : 로그인 실패시  username-parameter : form username name을 bId 로 변경  -->
+	    <form-login login-page="/loginForm.html" login-processing-url="/login" username-parameter="bId" password-parameter="bPw" authentication-failure-forward-url="/loginForm.html?ng"/>
+	    <logout logout-url="/logout" invalidate-session="true" logout-success-url="/login.html"/>
 		<intercept-url pattern="/login.html" access="hasRole('ROLE_USER')" />
 	    <intercept-url pattern="/welcome.html" access="hasRole('ROLE_ADMIN')"/>
-	    
+	    <csrf disabled="true"/>
+	   
 	</http>
 	
 	<authentication-manager>
 	    <authentication-provider>
 	      <user-service>
 	        <user name="user" password="1234" authorities="ROLE_USER" />
-	        <user name="root" password="1234" authorities="ROLE_ADMIN" />
+	        <user name="root" password="1234" authorities="ROLE_ADMIN, ROLE_USER" />
 	      </user-service>
 	    </authentication-provider>
   	</authentication-manager>

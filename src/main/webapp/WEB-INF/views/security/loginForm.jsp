@@ -8,9 +8,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="<c:url value="j_spring_security_check"/>	" method="post">
-		ID : <input type="text" name="j_username" id="j_username"><br>
-		PW : <input type="text" name="j_password" id="j_password"><br>
+	<form action="<c:url value='/login'/>" method="post">
+		<!-- ng가 null이 아니면 메시지를 표출 -->
+		<c:if test="${param.ng != null}">
+			<p>
+				Login NG! <br/>
+				<c:if test="${SPRING_SECURITY_LAST_EXCEPTION != NULL }">
+					message : <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"></c:out>
+				</c:if>
+			</p>
+		</c:if>
+		ID : <input type="text" name="bId" id="bId"><br>
+		PW : <input type="text" name="bPw" id="bPw"><br>
 		<input type="submit" value="Login">		
 	</form>
 </body>

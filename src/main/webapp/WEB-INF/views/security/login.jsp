@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,5 +9,18 @@
 </head>
 <body>
 	<h1>login</h1>
+	
+	<!-- pageContext.request.userPrincipal 사용자의 권한이 비어있지 않으면 -->
+	<c:if test="${not empty pageContext.request.userPrincipal}">
+		<p>is Log-In</p>
+	</c:if>
+	
+	<c:if test="${empty pageContext.request.userPrincipal}">
+		<p>is Log-Out</p>
+	</c:if>
+	
+	USER ID : ${pageContext.request.userPrincipal.name}<br>
+	<a href="<c:url value='/logout'/>">Log Out</a>
+	
 </body>
 </html>
