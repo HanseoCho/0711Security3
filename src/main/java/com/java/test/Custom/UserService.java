@@ -15,15 +15,19 @@ public class UserService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		UserDto user = getUserById(username);
-		System.out.println(user);
-		return null;
+		if(user == null) {
+			throw new UsernameNotFoundException("User not Found");
+		}
+		return user;
 	}
+	
+
 	public UserDto getUserById(String username) {
 		HashMap<String, Object> param = new HashMap<String,Object>();
 		UserDto result = new UserDto();
-		param.put("id", username);
+		param.put("id", "user");
 		param.put("pw", "1234");
-		result = (UserDto) ss.selectList("user.select", param);
+		result = ss.selectOne("user.select", param);
 		return result;
 	}
 }

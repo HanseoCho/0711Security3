@@ -1,5 +1,6 @@
 package com.java.test;
 
+import java.io.Console;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -63,14 +64,14 @@ public class HomeController {
 	}		
 	@RequestMapping("/testdb")
 	public void testdb() {
+		System.out.println("test");
 		//System.out.println(ss.selectList("user.select"));
-		HashMap<String, Object> param = new HashMap<String,Object>();
-		UserDto result = new UserDto();
-		param.put("id", "user");
-		param.put("pw", "1234");
-		result = ss.selectOne("user.select", param);
+		//HashMap<String, Object> param = new HashMap<String,Object>();
+		//UserDto result = new UserDto();
+		//param.put("id", "user");
+		//param.put("pw", "1234");
+		//result = ss.selectOne("user.select", param);
 		//System.out.println(ss.selectList("user.select", param));
-		System.out.println(result.gettest());
-		System.out.println(result.getUsername());
 	}
+	
 }

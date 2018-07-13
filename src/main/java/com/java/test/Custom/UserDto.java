@@ -24,6 +24,12 @@ public class UserDto implements UserDetails {
 			grants.add(new SimpleGrantedAuthority(role));
 		}
 		return grants;
+		/*
+		모든유저에게 권한을 동등한 권한을 부여할시
+        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+        authorities.add(new SimpleGrantedAuthority("ROLE_USER")); //회원가입한 사람은 누구나 ROLE_USER 권한을 갖는다.
+        return authorities;
+	 */		
 	}
 	public String gettest() {
 		// TODO Auto-generated method stub

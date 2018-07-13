@@ -21,14 +21,9 @@
 	   
 	</http>
 	
+	<!-- 로그인 방식과 인증처리를 어디서 할것인지에 대한 부분, 직접만든 userService로 핸들링한다. -->
 	<authentication-manager>
-	    <authentication-provider>
-	      <user-service>
-	        <user name="user" password="1234" authorities="ROLE_USER" />
-	        <user name="root" password="1234" authorities="ROLE_ADMIN, ROLE_USER" />
-	      </user-service> 
-
-	      
+	    <authentication-provider user-service-ref="userService">
 	    </authentication-provider>
   	</authentication-manager>
 </beans:beans>
